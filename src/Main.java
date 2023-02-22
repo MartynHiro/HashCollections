@@ -13,7 +13,7 @@ public class Main {
 
         MethodsShelf.fillingMap(text, map);
 
-        MethodsShelf.frequencyDetection(map);
+        MethodsShelf.frequencyDetermination(map);
     }
 
 }

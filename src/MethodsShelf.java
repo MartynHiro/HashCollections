@@ -17,38 +17,39 @@ public class MethodsShelf {
             }
         }
     }
-public static String frequencyDetection(Map<Character, Integer> map) {
-    //ищем самый часто/редко используемый символ
-    char mostFrequentSymbol = 0;
-    int maxCount = 0;
 
-    char theRarestSymbol = 0;
-    int minCount = 0;
+    public static String frequencyDetermination(Map<Character, Integer> map) {
+        //ищем самый часто/редко используемый символ
+        char mostFrequentSymbol = 0;
+        int maxCount = 0;
 
-    for (Map.Entry<Character, Integer> kv : map.entrySet()) { //проходимся по каждому значению в нашей мапе
-        char currentSymbol = kv.getKey();
-        int currentCount = kv.getValue();
+        char theRarestSymbol = 0;
+        int minCount = 0;
 
-        if (maxCount == 0) { //если это наша первая проходка, то добавляем нашу первую пару и частый и в редкий символ
-            mostFrequentSymbol = currentSymbol;
-            maxCount = currentCount;
+        for (Map.Entry<Character, Integer> kv : map.entrySet()) { //проходимся по каждому значению в нашей мапе
+            char currentSymbol = kv.getKey();
+            int currentCount = kv.getValue();
 
-            theRarestSymbol = currentSymbol;
-            minCount = currentCount;
+            if (maxCount == 0) { //если это наша первая проходка, то добавляем нашу первую пару и частый и в редкий символ
+                mostFrequentSymbol = currentSymbol;
+                maxCount = currentCount;
+
+                theRarestSymbol = currentSymbol;
+                minCount = currentCount;
+            }
+
+            if (currentCount > maxCount) {  //сохраняем самую частую букву
+                mostFrequentSymbol = currentSymbol;
+                maxCount = currentCount;
+            }
+
+            if (currentCount < minCount) { //сохраняем самую редкую букву
+                theRarestSymbol = currentSymbol;
+                minCount = currentCount;
+            }
         }
-
-        if (currentCount > maxCount) {  //сохраняем самую частую букву
-            mostFrequentSymbol = currentSymbol;
-            maxCount = currentCount;
-        }
-
-        if (currentCount < minCount) { //сохраняем самую редкую букву
-            theRarestSymbol = currentSymbol;
-            minCount = currentCount;
-        }
-    }
-    return "Самая частая буква - " + mostFrequentSymbol + " использовалась " + maxCount + " раз " +
-            "\nСамая редкая буква - " + theRarestSymbol + " использовалась " + minCount + " раз";
+        return "Самая частая буква - " + mostFrequentSymbol + " использовалась " + maxCount + " раз " +
+                "\nСамая редкая буква - " + theRarestSymbol + " использовалась " + minCount + " раз";
 
     }
 }
